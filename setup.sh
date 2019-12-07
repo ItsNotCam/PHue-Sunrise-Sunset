@@ -1,5 +1,12 @@
 #!/bin/bash
 
+echo "\e[32mInstalling dependencies ..."
+sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install docker.io docker-compose python3 python3-pip -y
+python3 -m pip3 install --upgrade pip3
+sudo apt-get install python3-venv -y
+
 echo "\e[36mSetting up virtual environment ... "
 python3 -m venv venv
 echo "\e[36mDone\n"
