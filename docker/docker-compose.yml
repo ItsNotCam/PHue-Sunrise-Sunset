@@ -1,22 +1,30 @@
 version: '3'
 services:
         mysql:
-                image: mysql
+                image: mysql:8.0.18
                 container_name: huedb
                 environment:
                         - MYSQL_ROOT_PASSWORD=password
                 volumes:
-                        - "/home/axiiom/hue/docker:/docker-entrypoint-initdb.d"
+                        - huesql:/docker-entrypoint-initdb.d
                 networks:
                         huesql:
                                 ipv4_address: 172.172.172.2
                 restart: always
+volumes:
+        huesql:
+                driver: local
+                driver_opts:
+                        type: none
+                        device: "/home/axiiom/phue-controller/docker"
+                        o: bind
+                       
+
 networks:
         huesql:
                 driver: bridge
+                driver_opts:
+                        com.docker.network.bridge.name: huesql
                 ipam:
                         config:
                                 - subnet: 172.172.172.0/16
-
-
-
