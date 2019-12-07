@@ -10,7 +10,7 @@ pip3 install -r source/requirements.txt
 echo "\e[32mDone\n"
 
 echo "\e[35mSetting up crontab ..."
-python3 source/sunrise_sunset.py
+venv/bin/python3 source/sunrise_sunset.py
 echo "\e[35mDone\n"
 
 echo "\e[34mSetting up docker mysql instance ...\e[0m"
