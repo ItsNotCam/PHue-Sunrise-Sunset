@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta
 from crontab import CronTab
-import requests, json, time, sqlite3, os
+import requests, json, time, sqlite3, os, sys
+
+user = sys.argv[1]
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 config_path = os.path.join(basedir, 'config.json')
@@ -40,7 +42,7 @@ sunset_time = (
 ).time()
 
 
-cron = CronTab(user='axiiom')
+cron = CronTab(user=user)
 
 found = cron.find_comment('sunrise')
 for job in found:
@@ -52,6 +54,7 @@ sunrise = cron.new(
 )
 sunrise.day.every(1)
 sunrise.hour.on(sunrise_time.hour)
+sunrise.minute.on(sunrise_time.minute)
 print("Creating:",repr(sunrise))
 
 found = cron.find_comment('sunset')
@@ -64,6 +67,7 @@ sunset = cron.new(
 )
 sunset.day.every(1)
 sunset.hour.on(sunset_time.hour)
+sunset.minute.on(sunset_time.minute)
 print("Creating:",repr(sunset))
 
 cron.write()

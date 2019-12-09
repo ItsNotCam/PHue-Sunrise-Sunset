@@ -60,15 +60,15 @@ if cnx is not None or cnx.is_connected():
     method = "PUT"
 
     cursor = cnx.cursor(dictionary=True)
-    cursor.execute('''
+    query = '''
         INSERT INTO {} (
           success, dt, method, uri, preset
         ) VALUES (
             {}, \"{}\", \"{}\", \"{}\", \"{}\"
         )
         '''.format(table, int(success), datetime.now(), method, uri, args[1])
-    )  
-
+    cursor.execute(query)
+    
     cnx.commit()
     cursor.close()
     cnx.close()

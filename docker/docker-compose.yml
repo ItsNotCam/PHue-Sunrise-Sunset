@@ -16,7 +16,7 @@ volumes:
                 driver: local
                 driver_opts:
                         type: none
-                        device: "/home/axiiom/phue-controller/docker"
+                        device: "/home/dev/phue-controller/docker"
                         o: bind
                        
 
