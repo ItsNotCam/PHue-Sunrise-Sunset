@@ -1,5 +1,5 @@
-__pychache__/**
-venv/**
+**__pychache__
+**venv
 
 source/config.json
 source/archived.zip
