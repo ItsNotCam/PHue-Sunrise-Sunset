@@ -43,7 +43,7 @@ sunset_time = (
 
 
 cron = CronTab(user=user)
-
+'''
 found = cron.find_comment('sunrise')
 for job in found:
     cron.remove(job)
@@ -56,7 +56,7 @@ sunrise.day.every(1)
 sunrise.hour.on(sunrise_time.hour)
 sunrise.minute.on(sunrise_time.minute)
 print("Creating:",repr(sunrise))
-
+'''
 found = cron.find_comment('sunset')
 for job in found:
     cron.remove(job)
